@@ -1,0 +1,25 @@
+server:
+  servlet:
+    context-path: /grandchild-service
+  port: 8082
+
+spring:
+  application:
+    name: "grandchild"
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: prometheus, health
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true

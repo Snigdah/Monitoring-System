@@ -27,11 +27,14 @@ dependencies {
 	implementation 'com.github.loki4j:loki-logback-appender:1.5.0'
 	implementation 'io.micrometer:micrometer-observation:1.10.0'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+	//implementation 'io.micrometer:micrometer-tracing-bridge-brave'
 	implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
 
 	//runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 	runtimeOnly 'io.micrometer:micrometer-registry-otlp'
+
+	runtimeOnly 'io.micrometer:micrometer-tracing-bridge-otel'
+	runtimeOnly 'io.opentelemetry:opentelemetry-exporter-otlp'
 }
 
 tasks.named('test') {
